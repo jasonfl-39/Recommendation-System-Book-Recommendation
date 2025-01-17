@@ -53,15 +53,15 @@ Mengingat bahwa penggunaan variabel dengan tanda '-' dapat memicu masalah pada P
 Selanjutnya dapat diperiksa jenis data pada setiap file:
 Pada dataframe book\_df yang berisi dari Books.csv, diperoleh 271.360 entri dengan dua entri kosong pada kolom Book\_Author dan Publisher.
 
-![Naamloos3](https://github.com/user-attachments/assets/e46fe23c-aa79-47c1-8785-e6b785ba45c8)
+![image](https://github.com/user-attachments/assets/68ea03c5-e217-4873-8397-87bf8b6b99ad)
 
 Pada dataframe user_df yang berisi dari Users.csv, diperoleh 278.858 entri dengan jumlah entri kosong cukup signifikan pada kolom Age.
 
-![Naamloos5](https://github.com/user-attachments/assets/338cd5fc-9d1e-4d9b-b967-756fa54af482)
+![image](https://github.com/user-attachments/assets/8d6c512b-2e59-4625-9858-af0a3f600465)
 
 Pada dataframe rating_df yang berisi dari Ratings.csv, diperoleh 1.149.780 entri tanpa missing value.
 
-![Naamloos7](https://github.com/user-attachments/assets/58e9b420-3d4c-4927-b8b1-0c2b4e2a0619)
+![image](https://github.com/user-attachments/assets/c565b7da-e302-4320-8e25-a4fa7727a2cc)
 
 Selanjutnya, diperoleh pula jumlah entri data unik pada book\_df dan user\_df:
 
@@ -72,46 +72,47 @@ Diperhatikan bahwa fitur `User_ID` sudah berbentuk integer dan tidak ada missing
 
 Pada book\_df, diperoleh jumlah data unik untuk setiap fitur berikut:
 
-![Naamloos4](https://github.com/user-attachments/assets/079cb962-36a1-4631-8957-995beacdc74e)
+![image](https://github.com/user-attachments/assets/29245100-07ab-4893-9a08-7395f677999f)
 
 Pada rating\_df, diperoleh jumlah data unik untuk setiap fitur berikut:
 
-![Naamloos8](https://github.com/user-attachments/assets/b6d88899-bbb3-46a4-bd0b-2651b7162239)
+![image](https://github.com/user-attachments/assets/43776494-3ed2-4591-91fe-0e9833c5de69)
 
 Sebelumnya telah dibahas bahwa pada data rating terdapat jenis rating eksplisit di mana user memberikan nilai rating 1-10 kepada suatu buku, atau rating implisit bernilai 0 di mana user telah melihat buku tetapi tidak memberikan nilai rating. Proses training model hanya akan mengambil data eksplisit pada supaya nilai rating 0 tidak membuat suatu buku tertentu seakan-akan tidak disukai oleh user padahal user hanya tidak memberikan nilai tertentu yang belum tentu berarti bahwa user tidak menyukai buku tersebut. Sementara itu, keseluruhan data buku, baik eksplisit dan implisit, tetap akan ditracking sehingga sistem rekomendasi hanya akan menyarankan buku yang belum dilihat user. Karena itu, dilakukan pembagian data rating menjadi data rating eksplisit dan implisit. Diperoleh jumlah data berikut:
 
-![Naamloos9](https://github.com/user-attachments/assets/3088806d-3e60-4b3d-a7cf-94a0102e23ad)
+![image](https://github.com/user-attachments/assets/61ecdb4d-edf0-4198-8f25-894c4c769ec3)
 
 dengan jumlah data user pada setiap pembagian data rating:
 
-![image](https://github.com/user-attachments/assets/f2fd28b5-3194-4a9d-9be4-9c734f87986b)
+![image](https://github.com/user-attachments/assets/f21dc2bd-777f-4618-93f1-b3b8c00e8353)
 
 dan jumlah data buku pada setiap pembagian data rating:
 
-![image](https://github.com/user-attachments/assets/59b2b11a-8671-4c67-b223-d5f97b0e4a07)
+![image](https://github.com/user-attachments/assets/1f90e7ef-5068-4c29-b9b2-732b81011763)
 
 Selanjutnya, data buku dipasangkan dengan data rating keseluruhan yang akan digunakan oleh variabel yang akan mentracking buku apa saja yang belum dibaca user. Diperoleh data berikut:
 
-![image](https://github.com/user-attachments/assets/e25b89b8-4ace-4632-8585-8a0fe823ce21)
+![image](https://github.com/user-attachments/assets/a9e29c85-20d6-49f7-9da5-ffff816bff51)
 
-Data hasil pemasangan ini dimasukkan dalam variabel `all_books_clean`, di mana diperoleh sejumlah missing value berikut:
+Data hasil pemasangan ini dimasukkan dalam variabel `all_books_title`, di mana diperoleh sejumlah missing value berikut:
 
-![image](https://github.com/user-attachments/assets/097a323e-7a0f-4ad7-bbee-1b0ccda4fbb9)
+![image](https://github.com/user-attachments/assets/45ee218a-b562-4689-92d5-5d5432d18e24)
 
-Data buku juga  dipasangkan dengan data rating eksplisit yang akan dipakai pada proses training. Diperoleh data berikut:
+Data buku juga dipasangkan dengan data rating eksplisit yang akan dipakai pada proses training. Diperoleh data berikut:
 
-![image](https://github.com/user-attachments/assets/d77967a8-4937-4df8-a0ab-1ddbab7ccd74)
+![image](https://github.com/user-attachments/assets/f1b37c2d-7ef0-40eb-a36c-05c95ea25e0d)
 
-Data hasil pemasangan ini dimasukkan dalam variabel `exp_books_clean`, di mana diperoleh sejumlah missing value berikut:
+Data hasil pemasangan ini dimasukkan dalam variabel `exp_books_title`, di mana diperoleh sejumlah missing value berikut:
 
-![Naamloos19](https://github.com/user-attachments/assets/537479f6-6a12-48ba-9750-a058fb4b2171)
+![image](https://github.com/user-attachments/assets/0eaa85cf-76e6-464f-af70-52e6bffac38c)
+
 
 ## Data Preparation
 Sebelum data dapat digunakan pada model, ada beberapa tahapan pembersihan data yang harus dilakukan terlebih dahulu.
 
 ### Mengatasi Missing Value
 Pada Exploratory Data Analysis, terlihat bahwa terdapat beberapa missing value dari hasil pemasangan data rating dengan data buku, baik pada data keseluruhan dan data eksplisit.
-Pada data keseluruhan, sebelumnya terdapat 118.650 missing value
+Pada data keseluruhan, sebelumnya terdapat 298.273 missing value
 Snippet kode:
 ```
 all_books_clean = all_books_title.dropna()
@@ -119,7 +120,7 @@ all_books_clean.isnull().sum()
 ```
 Diperoleh bahwa tidak ada missing value lagi pada data keseluruhan.
 
-![Naamloos20](https://github.com/user-attachments/assets/66d2b5e0-a600-4881-9480-477d032cb35c)
+![image](https://github.com/user-attachments/assets/6663cd0a-0310-48f2-b3f2-0eb1795c4ebb)
 
 Pada data eksplisit, sebelumnya terdapat 49.832 missing value
 Snippet kode:
@@ -129,7 +130,7 @@ exp_books_clean.isnull().sum()
 ```
 Diperoleh bahwa tidak ada missing value lagi pada data eksplisit.
 
-![Naamloos20](https://github.com/user-attachments/assets/66d2b5e0-a600-4881-9480-477d032cb35c)
+![image](https://github.com/user-attachments/assets/3c355303-c0d1-467f-9dc0-271f35c31cea)
 
 ### Encoding ISBN
 Sebelumnya, terlihat bahwa fitur ISBN memiliki dtype object yang tidak bisa diproses secara langsung oleh model. Oleh karena itu perlu dilakukan encoding data ini menjadi integer sehingga dapat digunakan.
@@ -157,11 +158,11 @@ book_sort
 ```
 Data sebelum duplikat didrop:
 
-![Naamloos16](https://github.com/user-attachments/assets/34d6d773-be4a-4af8-bc5f-302c3f511d3a)
+![image](https://github.com/user-attachments/assets/2e4ba4bd-3aa6-4659-89a1-294306862965)
 
 Setelah data duplikat didrop:
 
-![Naamloos17](https://github.com/user-attachments/assets/9a3eeb9a-c54f-491d-ba20-607443509cee)
+![image](https://github.com/user-attachments/assets/bcd0dc5d-ff96-4a33-a356-caf826a50979)
 
 Sudah diperoleh 149.833 baris data dengan jumlah ISBN dan judul sama.
 Selanjutnya daftar setiap ISBN dan judul dikumpulkan dalam list, dan kemudian dimasukkan ke dalam dictionary `book_dict`.
@@ -179,7 +180,7 @@ book_dict
 ```
 Diperoleh dictionary berikut:
 
-![Naamloos18](https://github.com/user-attachments/assets/1c419908-1cdd-4b66-906c-be5100af83a4)
+![image](https://github.com/user-attachments/assets/f91fbf43-ea71-44af-a8c5-47ef82e5bca7)
 
 ### Train-Test Split
 Untuk melakukan validasi model, dataset yang telah dipasangkan dan dibersihkan perlu dibagi menjadi training set dan testing set. Berhubungan dengan ukuran data yang cukup besar, diambil rasio train:test pada 90:10. Sebelum pembagian data, pada variabel x User ID dan encoding ISBN dicocokan menjadi satu value. Pada variabel y, nilai rating dinormalisasi menjadi berada pada range 0-1.
@@ -270,7 +271,7 @@ history = model.fit(
 ```
 Menurut hasil dari training, diperoleh grafik berikut:
 
-![download](https://github.com/user-attachments/assets/0a6a3946-6460-473e-9c73-94eff1925ebf)
+![image](https://github.com/user-attachments/assets/ecfd9868-1f21-440e-ba60-c21117a9a617)
 
 Diperoleh tingkat error secara umum menurun pada setiap epoch, baik pada training dan validation set. Ada kemungkinan bahwa model masih underfit tetapi mengingat ukuran dataset yang sangat besar, akan memakan waktu dan beban komputasi yang sangat besar jika diambil ukuran batch lebih kecil dan jumlah epoch lebih banyak.
 
@@ -310,6 +311,6 @@ for row in recommended_book.itertuples():
 ```
 Hasil dari model ini pada salah satu user random memberikan output berikut:
 
-![Naamloos1](https://github.com/user-attachments/assets/f844f6eb-3688-47e1-a5a3-94b73efbb455)
+![image](https://github.com/user-attachments/assets/ccd13094-762f-40af-8d7f-76ff9079425d)
 
 Diperoleh bahwa sistem rekomendasi berhasil memberikan rekomendasi 10 buku relevan yang mungkin akan disukai user berdasarkan pada rating eksplisit dari user dan buku lainnya yang telah dilihat oleh user. Dapat disimpulkan bahwa sistem rekomendasi ini sudah berjalan dengan cukup baik dalam menyelesaikan masalah-masalah pada perihal sistem rekomendasi buku kepada user seperti tertera pada Business Understanding. Untuk kelanjutannya, sistem ini masih bisa disempurnakan lagi jika terdapat waktu dan kemampuan komputasi lebih tinggi untuk melakukan training sehingga bisa menjadi lebih akurat lagi dalam memberikan rekomendasi.
