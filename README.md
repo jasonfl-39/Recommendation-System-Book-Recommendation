@@ -65,7 +65,7 @@ Pada dataframe rating_df yang berisi dari Ratings.csv, diperoleh 1.149.780 entri
 
 Selanjutnya, diperoleh pula jumlah entri data unik pada book\_df dan user\_df:
 
-![image](https://github.com/user-attachments/assets/1f67f778-4310-4121-9547-46e5dd5ebef5)
+![image](https://github.com/user-attachments/assets/26e1c844-f191-458b-afba-71db6178f55d)
 
 Karena jumlahnya sesuai dengan jumlah entri, maka tidak ada data duplikat pada book\_df ataupun user\_df.
 Diperhatikan bahwa fitur `User_ID` sudah berbentuk integer dan tidak ada missing value ataupun duplikat sehingga dapat digunakan pada algoritma Collaborative Filtering tanpa encoding nantinya. Sementara itu fitur `ISBN` berbentuk object sehingga akan diperlukan encoding supaya dapat digunakan. Pada model sendiri, fitur yang akan diperlukan hanya fitur `User_ID`, `ISBN`, `Book-Title`, dan `Book-Rating`, sehingga di luar beberapa penyesuaian untuk memastikan tidak ada entri tidak valid pada data, fitur-fitur lainnya dapat diabaikan pada proyek ini. 
